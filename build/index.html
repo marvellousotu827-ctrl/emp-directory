@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+      integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=polymer"
+    />
+    <script defer src="main.js"></script>
+    <title>NOTO-INTRANET EMPLOYEE DIRECTORY</title>
+  </head>
+
+  <body>
+    <!-- <div class="overlay"></div> -->
+    <header>
+      <h1>EMD</h1>
+
+      <div class="icons">
+        <i tabindex="0" class="bi bi-moon"></i>
+        <i tabindex="0" class="bi bi-list-ul" id="menu-trigger"></i>
+      </div>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="">NEWS & PUBLICATIONS</a></li>
+          <li><a href="">EMPLOYEE RESOURCES</a></li>
+          <li><a href="">DEPARTMENTS</a></li>
+          <li><a href="">SAFTEY & QUALITY</a></li>
+          <li><a href="">TEMPLATES/FORMS</a></li>
+          <li><a href="">OUR COMPANY</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Employee Directory</h2>
+      <div class="search-area">
+        <p>SEARCH FOR DEPARTMENTS</p>
+        <select name="departments" id="departments">
+          <option id="value-output" value=""></option>
+        </select>
+
+        <div class="serachBar">
+          <input
+            type="search"
+            name="depart-search"
+            id="depart-search"
+            placeholder="Search..."
+          />
+
+          <i class="bi bi-search"></i>
+        </div>
+      </div>
+
+      <section class="employees">
+        <div class="holder">
+          <div class="contents">
+            <img src="https://placehold.co/600x400.png" alt="Employee" />
+            <p class="name">Marion Farrel</p>
+            <p class="role">UX Designer</p>
+            <hr />
+            <p>
+              <i class="bi bi-envelope"></i>
+              placeholder@email.com
+            </p>
+            <p>
+              <i class="bi bi-phone"></i>
+              Mob: 0000000067
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
