@@ -12,7 +12,7 @@ const data = async () => {
 
     // Create textContent for the option
     const company = data.users.map((user) => {
-      userDep.push(user.company.department);
+      return userDep.push(user.company.department);
     });
 
     // Create and append employees

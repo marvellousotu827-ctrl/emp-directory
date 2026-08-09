@@ -26,8 +26,29 @@ html {
   --color-border: #e0e0e0;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-accent-mint: #4eca96;
+
+    /* Dark Neutrals & Typography */
+    --color-header-bg: #171918;
+    --color-text-primary: #f1f3f2;
+    --color-text-secondary: #a7afab;
+
+    /* Light Neutrals & Backgrounds */
+    --color-bg-card: #202522;
+    --color-bg-sidebar: #181c1a;
+    --color-border: #353b38;
+  }
+}
+
 .overlay {
   height: 100vh;
+}
+
+body {
+  background-color: var(--color-bg-sidebar);
+  color: var(--color-text-primary);
 }
 
 /* Header */
@@ -42,6 +63,7 @@ header {
   width: 100%;
   position: relative;
   height: max-content;
+  margin-bottom: 2px solid var(--color-border);
 }
 
 h1 {
@@ -67,9 +89,7 @@ h1 {
   border-radius: 50%;
   padding: 0.5rem;
   cursor: pointer;
-}
-
-.icons i:nth-child(2) {
+  color: var(--color-text-primary);
   font-size: 2rem;
 }
 
@@ -172,6 +192,8 @@ option {
   margin-left: 0.5rem;
   padding: 0.5rem;
   border-radius: 8px;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-card);
 }
 
 .searchBar {
@@ -187,6 +209,7 @@ option {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-bg-card);
 }
 
 .searchBar input::placeholder {
@@ -204,6 +227,7 @@ option {
 section {
   padding-top: 2.5rem;
   display: flex;
+  gap: 1.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
