@@ -2,18 +2,23 @@ const menuBtn = document.getElementById("menu-trigger");
 const nav = document.getElementById("nav");
 const navLinks = document.querySelectorAll(".link");
 const section = document.getElementById("employees");
+const select = document.getElementById("departments");
 
 const data = async () => {
   try {
-    const userDep = [];
     const response = await fetch("https://dummyjson.com/users");
     const data = await response.json();
-    // console.log(data.users);
 
     // Create textContent for the option
     const company = data.users.map((user) => {
-      return userDep.push(user.company.department);
+      return user.company.department;
     });
+    const userDep = [...new Set(company)];
+    for (let i = 0; i < userDep.length; i++) {
+      const option = document.createElement("option");
+      option.innerHTML = userDep[i];
+      select.append(option);
+    }
 
     // Create and append employees
     function renderEmployees() {
@@ -66,7 +71,13 @@ const data = async () => {
       }
     }
 
-    renderEmployees();
+    if (data.ok) {
+      const err = document.createElement("p");
+      err.textContent = "Faild to Fetch Users";
+      section.append(err);
+    } else {
+      renderEmployees();
+    }
   } catch (error) {
     console.log(error.message);
   }
