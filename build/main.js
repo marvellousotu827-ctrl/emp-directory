@@ -16,13 +16,15 @@ const data = async () => {
     const userDep = [...new Set(company)];
     for (let i = 0; i < userDep.length; i++) {
       const option = document.createElement("option");
-      option.innerHTML = userDep[i];
+      option.textContent = userDep[i];
       select.append(option);
     }
 
     // Create and append employees
-    function renderEmployees() {
-      for (let i = 0; i < data.users.length; i++) {
+    function renderEmployees(user) {
+      section.textContent = "";
+
+      for (let i = 0; i < user.length; i++) {
         const div = document.createElement("div");
         div.classList.add("holder");
         section.append(div);
@@ -35,7 +37,7 @@ const data = async () => {
         //
         const img = document.createElement("img");
         img.classList.add("img");
-        img.src = data.users[i].image;
+        img.src = user[i].image;
         secDiv.append(img);
 
         //
@@ -45,13 +47,12 @@ const data = async () => {
 
         //
         const name = document.createElement("p");
-        name.textContent =
-          data.users[i].firstName + " " + data.users[i].lastName;
+        name.textContent = user[i].firstName + " " + user[i].lastName;
         thirdDiv.append(name);
 
         //
         const role = document.createElement("p");
-        role.textContent = data.users[i].company.department;
+        role.textContent = user[i].company.department;
         thirdDiv.append(role);
 
         //
@@ -61,23 +62,38 @@ const data = async () => {
 
         //
         const email = document.createElement("p");
-        email.textContent = data.users[i].email;
+        email.textContent = user[i].email;
         contactSec.append(email);
 
         //
         const phone = document.createElement("p");
-        phone.textContent = data.users[i].phone;
+        phone.textContent = user[i].phone;
         contactSec.append(phone);
       }
     }
+    renderEmployees(data.users);
 
-    if (data.ok) {
-      const err = document.createElement("p");
-      err.textContent = "Faild to Fetch Users";
-      section.append(err);
-    } else {
-      renderEmployees();
+    // Search filter
+    function searchFilter() {
+      const search = document.getElementById("depart-search");
+
+      search.addEventListener("input", () => {
+        const value = search.value.toLowerCase();
+        const filter = data.users.filter((user) => {
+          return (
+            user.firstName.toLowerCase().includes(value) ||
+            user.lastName.toLowerCase().includes(value)
+          );
+        });
+        renderEmployees(filter);
+      });
     }
+    searchFilter();
+
+    const searchBtn = document.getElementById("search-btn");
+    searchBtn.addEventListener("click", () => {
+      searchFilter();
+    });
   } catch (error) {
     console.log(error.message);
   }
